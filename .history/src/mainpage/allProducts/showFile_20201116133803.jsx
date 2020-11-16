@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 
 
@@ -9,7 +9,7 @@ export default function ShowFile() {
     // const [dataValue, setDatavalue] = useState("");
 
     const fileUploader = (event) => {
-        // isButtonClicked(true);
+        isButtonClicked(true);
         axios({
             url: "http://127.0.0.1:8080/ozonics/sendFile",
             method: 'GET',

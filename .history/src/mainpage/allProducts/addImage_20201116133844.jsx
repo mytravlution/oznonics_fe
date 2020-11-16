@@ -14,12 +14,13 @@ export default function AddImage() {
     var category = id_arr[1];
     var level1 = id_arr[2];
     var level2 = id_arr[3];
-    // var level3 = id_arr[4];
+    var level3 = id_arr[4];
     var parameter = productSelectted+"/"+category+"/"+level1+"/"+level2;
     // let ar = productSelectted+"/"+category+"/"+level1+"/"+level2;
     // var parameter ="HR344"
-    // var str = [];
-    // let fname = '';
+        const [imageStr, setImageStr] = useState('');
+    var str = [];
+    let fname = '';
     // const fileSelected = async (event) => {
     //     let files = event.target.files;
     //     fname = event.target.files[0].name;

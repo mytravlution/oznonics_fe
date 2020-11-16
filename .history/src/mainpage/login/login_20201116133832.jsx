@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./login.scss"
 import Header from "../../shared/header/header"
-import {  post, baseUrl } from "../../shared/http-service";
+import {  post, baseUrl, refreshCookies } from "../../shared/http-service";
 import { Redirect } from 'react-router-dom';
 export default function Login() {
   const [loggedIn, setLoggedIn] = useState(false);

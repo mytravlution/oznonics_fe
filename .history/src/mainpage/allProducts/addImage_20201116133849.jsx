@@ -18,8 +18,9 @@ export default function AddImage() {
     var parameter = productSelectted+"/"+category+"/"+level1+"/"+level2;
     // let ar = productSelectted+"/"+category+"/"+level1+"/"+level2;
     // var parameter ="HR344"
-    // var str = [];
-    // let fname = '';
+        const [imageStr, setImageStr] = useState('');
+    var str = [];
+    let fname = '';
     // const fileSelected = async (event) => {
     //     let files = event.target.files;
     //     fname = event.target.files[0].name;

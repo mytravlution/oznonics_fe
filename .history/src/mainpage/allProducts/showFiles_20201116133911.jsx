@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function ShowFiles() {
    const [buttonClicked, isButtonClicked] = useState(false); 
-// var parameter = "HR200/Mechnical/Product Drawing/2D Drawing/Main Unit";
+var parameter = "HR200/Mechnical/Product Drawing/2D Drawing/Main Unit";
 const [dataValue, setDatavalue] = useState([]);
     const fileUploader = (event)=>{
         isButtonClicked(true);
