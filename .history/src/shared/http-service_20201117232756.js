@@ -1,5 +1,5 @@
 export const baseUrl = "https://lit-wave-93937.herokuapp.com/";
-// export const baseUrl = "http://127.0.0.1:8080/ozonics/";
+export const baseUrl = "http://127.0.0.1:8080/ozonics/";
 
 export function refreshCookies() {
     return document.cookie.split(/;\s/g).reduce((acc = {}, val) => {
