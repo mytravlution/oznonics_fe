@@ -1,0 +1,33 @@
+@import "../master.scss";
+
+.header{
+    background-color: $yellow;
+    color: white;
+    text-align: center;
+    margin: auto;
+    height: 40px;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 40px;
+}
+
+.header-button{
+    background-color: $black;
+    padding: 10px 10px 10px 10px;
+    transform: translate(10px, 15px);
+    // color: $yellow;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    width: 20%;
+
+}
+
+.search-bar{
+    float: right;
+    width: 200px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+}

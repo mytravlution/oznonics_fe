@@ -1,0 +1,50 @@
+@import "../master.scss";
+
+.header{
+    background-color: $yellow;
+    color: white;
+    text-align: center;
+    margin: auto;
+    height: 40px;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 40px;
+}
+
+.header-button{
+    background-color: $black;
+    padding: 10px 10px 10px 10px;
+    transform: translate(10px, 15px);
+    // color: $yellow;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    width: 20%;
+
+}
+
+.search-bar{
+    float:right; 
+    margin:7px;
+
+}
+.search-bar input[type=text]{ 
+    width:15px; 
+    height:25px; 
+    font-size: 16px;
+    padding-left: 15px;
+    border-radius:25px; 
+    border: none; 
+} 
+    
+.search-bar button{
+    background-color: $yellow; 
+    color:$black; 
+    float: right; 
+    padding: 5px 10px; 
+    margin-right: 16px; 
+    font-size: 12px; 
+    border: none; 
+    cursor: pointer;
+}
