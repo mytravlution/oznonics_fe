@@ -1,9 +1,8 @@
-import axios from 'axios';
+import React, { Component } from 'react'
 import { baseUrl } from "../../shared/http-service";
-import ListFiles from "../../mainpage/allProducts/listFiles";
 import Popup from "./popup";
 
-import React, { Component } from 'react'
+import ListFiles from "../../mainpage/allProducts/listFiles";
 
 export default class midHeader extends Component {
   constructor(props) {
