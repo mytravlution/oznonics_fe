@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './allProducts.scss'
+import './allPro.scss'
 
 export default class midHeader extends Component {
    
