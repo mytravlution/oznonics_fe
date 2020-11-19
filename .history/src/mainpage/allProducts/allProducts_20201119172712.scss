@@ -35,9 +35,8 @@
 }
 
 .products-outer{
-    width: 80vw;
-    height: auto;
-    min-height: 70vh;
+    width: 1145px;
+    height: 70%;
     background-color: white;
     border-radius: 50px;
     transform: translate(-50%, -50%);
@@ -83,10 +82,10 @@ h2 span{
 // margin-left: 70px;
 // font-weight: bolder;
 
-padding: 15px 10px 15px;
+padding: 5px 10px 5px;
 font-size: 20px;
 font-weight: medium;
-width: 20rem;
+width: 250px;
 background-color: #E9E10A;
 border-radius: 5px;
 border: none;
@@ -112,8 +111,7 @@ border: none;
     padding: 5px 10px 5px;
     font-size: 20px;
     font-weight: medium;
-    width: 20vw;
-    min-width: 200px;
+    width: 228px;
     height: fit-content;
     background-color: $yellow;
     border-radius: 10px;
@@ -130,7 +128,6 @@ border: none;
     opacity: 0; 
     right: 10px;
     transition: 0.5s;
-   
    
    
     }
@@ -153,8 +150,7 @@ border: none;
         padding: 5px 10px 5px;
         font-size: 20px;
         font-weight: medium;
-        width: 20vw;
-    min-width: 200px;
+        width: 228px;
         height: fit-content;
         background-color:$black;
         color: $yellow;
@@ -196,7 +192,6 @@ border: none;
 
     &:after{
         content: '»';
-        transform: rotate(90deg);
         position: absolute;
         opacity: 0; 
         right: -20px;
@@ -246,7 +241,7 @@ border: none;
         
         &:after{
             content: '»';
-            
+            transform: rotate(90deg);
             position: absolute;
             opacity: 0; 
             right: 20px;
@@ -447,11 +442,7 @@ margin: auto;
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            width: 70vw;
-    height: auto;
-    margin: auto;
-        }
-        @media(max-width: 768px)
-        {
-            .products-parent{height: auto;}
+            width: 80vw;
+    height: 50vh;
+    margin: aut
         }

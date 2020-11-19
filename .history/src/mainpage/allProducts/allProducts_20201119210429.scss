@@ -130,7 +130,8 @@ border: none;
     opacity: 0; 
     right: 10px;
     transition: 0.5s;
-   
+    width: 20vw;
+    min-width: 200px;
    
    
     }
@@ -196,7 +197,6 @@ border: none;
 
     &:after{
         content: '»';
-        transform: rotate(90deg);
         position: absolute;
         opacity: 0; 
         right: -20px;
@@ -246,7 +246,7 @@ border: none;
         
         &:after{
             content: '»';
-            
+            transform: rotate(90deg);
             position: absolute;
             opacity: 0; 
             right: 20px;

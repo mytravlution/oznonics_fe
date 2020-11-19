@@ -132,7 +132,6 @@ border: none;
     transition: 0.5s;
    
    
-   
     }
     &:hover{
     padding-right: 24px;
@@ -153,8 +152,7 @@ border: none;
         padding: 5px 10px 5px;
         font-size: 20px;
         font-weight: medium;
-        width: 20vw;
-    min-width: 200px;
+        width: 228px;
         height: fit-content;
         background-color:$black;
         color: $yellow;
@@ -196,7 +194,6 @@ border: none;
 
     &:after{
         content: '»';
-        transform: rotate(90deg);
         position: absolute;
         opacity: 0; 
         right: -20px;
@@ -246,7 +243,7 @@ border: none;
         
         &:after{
             content: '»';
-            
+            transform: rotate(90deg);
             position: absolute;
             opacity: 0; 
             right: 20px;

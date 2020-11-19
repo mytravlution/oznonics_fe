@@ -14,6 +14,8 @@ export default function Products() {
     }
 
     return (
+
+        <meta name="viewport" content="width = device-width, initial-scale"
         <div className="bg-color">
             <Header />
           

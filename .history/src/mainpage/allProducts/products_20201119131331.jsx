@@ -14,6 +14,8 @@ export default function Products() {
     }
 
     return (
+
+
         <div className="bg-color">
             <Header />
           

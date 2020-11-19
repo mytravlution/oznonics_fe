@@ -196,10 +196,9 @@ border: none;
 
     &:after{
         content: '»';
-        transform: rotate(90deg);
         position: absolute;
         opacity: 0; 
-        right: -20px;
+        right: 20px;
         transition: 0.5s;
        
         }
@@ -246,10 +245,10 @@ border: none;
         
         &:after{
             content: '»';
-            
+            transform: rotate(90deg);
             position: absolute;
             opacity: 0; 
-            right: 20px;
+            right: -20px;
             transition: 0.5s;
             }
             &:hover{

@@ -14,6 +14,8 @@ export default function Products() {
     }
 
     return (
+
+
         <div className="bg-color">
             <Header />
           
@@ -21,7 +23,7 @@ export default function Products() {
             <div className="products-outer">
             <MidHeader />
                 <h2><span>Products</span></h2>
-                <div className="products-parent">
+                <div className="master">
                 <div className="products-inner"><Link to="/product/HR230" style={{ color: "black" }}><button onClick={onProductClicked} className="product-button" >HR230</button></Link></div>
                 <div className="products-inner"><Link to="/product/HR300" style={{ color: "black" }}><button onClick={onProductClicked} className="product-button"  >HR300</button></Link></div>
                 <div className="products-inner"><Link to="/product/HR400" style={{ color: "black" }}><button onClick={onProductClicked} className="product-button"  >HR400/Orion</button></Link></div>

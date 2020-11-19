@@ -25,13 +25,13 @@
 }
 
 .search-bar{
-    // float:left; 
-    margin-left: -15%;
+    float:left; 
+    margin-left: 5%;
     margin-top: -40px;
 
 }
 .search-bar input[type=text]{ 
-    width:20vw; 
+    width:20vwpx; 
     height:30px; 
     font-size: 16px;
     padding-left: 15px;
@@ -56,11 +56,11 @@
     height: auto;
     margin: auto;}
 .add-user{
-    // float: right;
-    margin-right: -15%;
-    margin-top: -90px
-    // align-items: center;
-    // text-align: center;
+    float: right;
+    margin-right: 5%;
+    margin-top: -8%;
+    align-items: center;
+    text-align: center;
 }
 
 .user-img{

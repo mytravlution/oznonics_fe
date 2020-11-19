@@ -14,6 +14,8 @@ export default function Products() {
     }
 
     return (
+
+        <meta name="viewport" content="wid"
         <div className="bg-color">
             <Header />
           
