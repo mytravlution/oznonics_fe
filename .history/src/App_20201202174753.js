@@ -23,16 +23,16 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/signin" component={MainPage} />
-          <Route  path="/product/:id" component={SingleProduct} />
-          <Route  path="/products/" component={Products} />
-          <Route  path="/addImage/:id" component={AddImage} />
-          <Route  path="/showFiles/" component={ShowFiles} />
-          <Route  path="/showFile/" component={ShowFile} />
-          <Route  path="/otpVerify/" component={otpVerify} />
-          <Route  path="/showUsers" component={EditUser} />
-          <Route  path="/loginInfo" component={LoginDetail} />
-          <Route  path="/fileInfo" component={FileInfo} />
+          <Route exact="/signin" component={MainPage} />
+          <Route exact ="/product/:id" component={SingleProduct} />
+          <Route exact ="/products/" component={Products} />
+          <Route exact ="/addImage/:id" component={AddImage} />
+          <Route exact ="/showFiles/" component={ShowFiles} />
+          <Route exact ="/showFile/" component={ShowFile} />
+          <Route exact ="/otpVerify/" component={otpVerify} />
+          <Route exact ="/showUsers" component={EditUser} />
+          <Route exact ="/loginInfo" component={LoginDetail} />
+          <Route exact ="/fileInfo" component={FileInfo} />
 
           {/* <Route name="productDetail" exact path="/productdetail/:id/:type" component={ProductDetail} /> */}
           <Route
