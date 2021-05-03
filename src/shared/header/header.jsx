@@ -8,7 +8,7 @@ export default class header extends Component {
         return (
           
             <div className="header">
-                <a href="/products/"><img className="header-button" src={require("../../images/logo.png")} alt="logo" /></a>
+                <a href="/landing/"><img className="header-button" src={require("../../images/logo.png")} alt="logo" /></a>
                
             </div>
 

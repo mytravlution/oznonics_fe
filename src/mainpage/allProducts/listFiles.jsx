@@ -1,32 +1,126 @@
 import React, { Component } from 'react'
 import './allProducts.scss'
+import { baseUrl } from '../../shared/http-service';
+import Axios from 'axios';
+import MailPopup from './MailPopup';
+import ShowCommentPopup from './showCommentPopup';
+import Loader from '../../shared/loader/loader';
 
 export default class midHeader extends Component {
-   
-    
-    render() {
-    return (
-        <div>
 
-<div className="file-popup">
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      filename: '',
+      mailPopup: false,
+      id: '',
+      comments:'',
+      commentPopup:false,
+      loader:false,
+      file_id:''
+    };
+  }
+
+  openMailPopup12 = (name, file_id) => {
+    console.log(name);
+    this.setState(
+      {
+        mailPopup: true,
+        filename: name,
+        file_id: file_id
+      })
+      console.log("popup:"+this.state.mailPopup)
+  }
+  openCommentPopup = (name, comments) => {
+    console.log(name);
+    this.setState(
+      {
+        commentPopup: true,
+        filename: name,
+        comments: comments
+      })
+      console.log("popup:"+this.state.mailPopup)
+  }
+
+  fileUploader = (val, file_id) => {
+    console.log("id:" + val);
+
+    this.setState({
+      filename: val,
+      loader:true,
+      file_id: file_id
+    })
+    // isButtonClicked(true);
+    Axios({
+      url: baseUrl + "sendFile/",
+      method: 'GET',
+      responseType: "blob",
+      params: {
+        id: file_id
+      }
+    }).then(res => {
+      console.log(res.statusText);
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', this.state.filename);
+      document.body.appendChild(link);
+      link.click();
+      this.setState({
+        
+        loader:false
+      })
+    })
+
+
+  }
+
+  render() {
+    return (
+      <div>
+
+        <div className="file-popup">
+        {this.state.loader ? <Loader file="file" loaderCategory="download" /> : null}
+
+        {this.state.mailPopup ? <MailPopup filename={this.state.filename} file_id={this.state.file_id} /> : null}
+      {this.state.commentPopup ? <ShowCommentPopup filename={this.state.filename} comments={this.state.comments} id="cdcs" />: null}
           <div className="file-popup-inner">
             <div className="file-popup-header">
-              <p>Search Results for HR300</p>
+              {this.props.searchStr === "" ?
+                <p> All Results</p> :
+                <p>Search Results for "{this.props.searchStr}"</p>
+
+              }
+             
               <span onClick={this.props.closeFile}>&times;</span>
+
             </div>
-             {this.props.dataValues.map((link)=>(
-                   <div className="file-popup-body">
-                       <p >{link}</p>
-                         <a href={link} download>
-                             <img className="file-popup-img" src={require("../../images/download.png")} alt="download"/>
-                             </a>
-                         </div>)
-                )}
-          
+            <hr className="solid_files"></hr>
+            {this.props.dataValues.map((link, index) => (
+              <div className="file-popup-body" key={index}>
+                <p className="listfilesText" >{link.file_name}</p>
+                <div onClick={this.openCommentPopup.bind(this, link.file_name, link.comments)} >
+                  
+                  <i className="fa fa-comments  mail-icon" aria-hidden="true" />
+                  {/* <img className="file-popup-img" src={require("../../images/download.png")} /> */}
+                </div>
+
+                <div onClick={this.openMailPopup12.bind(this, link.file_name, link.file_id)} >
+                  <i className="fa fa-envelope mail-icon" aria-hidden="true"></i>
+                  {/* <img className="file-popup-img" src={require("../../images/download.png")} /> */}
+                </div>
+
+                <div onClick={this.fileUploader.bind(this, link.file_name, link.file_id)} value={link.file_name} >
+                  <img className="file-popup-img" src={require("../../images/download.png")} alt="download" />
+                </div>
+              </div>)
+            )}
+
           </div>
         </div>
-        </div>
+      </div>
     )
-}
+  }
 
 }

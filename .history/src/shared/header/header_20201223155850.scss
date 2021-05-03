@@ -1,0 +1,246 @@
+@import "../master.scss";
+
+.header{
+    background-color: $yellow;
+    color: white;
+    text-align: center;
+    // margin: auto;
+    height: 40px;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+.header-button{
+    background-color: $black;
+    padding: 10px 10px 10px 10px;
+    transform: translate(10px, 15px);
+    // color: $yellow;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    width: 20%;
+}
+
+.search-bar{
+    // float:left; 
+    margin-left: -15%;
+    margin-top: -40px;
+
+}
+.search-bar input[type=text]{ 
+    width:20vw; 
+    height:30px; 
+    font-size: 16px;
+    padding-left: 15px;
+    border-radius:25px; 
+    border: none; 
+} 
+    
+.search-bar button{
+    background-color: $black; 
+    color:$yellow; 
+    float: right; 
+    // padding: 5px; 
+    margin-right: 16px; 
+    font-size: 20px;
+    font-weight: bolder; 
+    border: none; 
+    cursor: pointer;
+}
+.search-parent{display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: auto;
+    margin: auto;}
+.add-user{
+    // float: right;
+    margin-right: -15%;
+    margin-top: -40px;
+    // align-items: center;
+    // text-align: center;
+}
+
+.user-img{
+    height: 20px;
+    width: 20px ;
+    // margin-top: 40px;
+    cursor: pointer;
+}
+.add-user p{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, 0.5);
+margin: auto;
+}
+.popup-inner{
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: -20%;
+    width: 362px;
+    height: 90vh;
+    margin: auto;
+    background: white;
+    padding-top: 15px;
+    border-radius: 25px;
+}
+.edit-popup-inner{
+    top: 10%;
+}
+.popup-header{
+    // width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+.popup-header p{
+    color: black;
+    font-size: 25px;
+
+}
+.popup-img{
+    width: 30px;
+    height: 30px;
+    top: 0;
+}
+.popup-header span{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.add-user-form{
+    display: grid;
+    justify-content: center;
+    // margin-left: 20px;
+    // margin-right: 20px;
+
+    label{
+        margin-left: 10px;
+        transform: translate(0px,20px);
+        background-color: white;
+        width: fit-content;
+        padding-left: 5px;
+        padding-right: 5px
+        
+    }
+    input{
+        border-radius: 5px;
+        border: solid 1px;
+        height: 40px;
+        width: 100%   
+     }
+     select{
+        border-radius: 5px;
+        border: solid 1px;
+        height: 40px;
+        width: 100%;
+        background-color: white;
+     }
+}
+
+.popup-button{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+.clear-button{
+    background-color: white;
+    color: black;
+    border-radius: 25px;
+    border: solid 1px;
+    font-size: 15px;
+    font-weight: bold;
+    width: 55px;
+    height: 33px;
+}
+.add-button{
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    border: solid 1px;
+    font-size: 15px;
+    font-weight: bold;
+    width: 55px;
+    height: 33px;
+}
+
+.fa{
+    font-size: xx-large;
+    color: white;
+}
+
+.myLinks{
+    display: grid;
+    position: fixed;
+    width: 50;
+    /* height: 100%; */
+    top: 0;
+    left: 83%;
+    right: 4%;
+    bottom: 62%;
+    background-color:white;
+    margin: auto;
+    display: grid;
+    border-radius: 10px;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+.myLinks a{
+
+    border-radius: 5px;
+    /* background-color: lightgrey; */
+    color: black;
+    padding: 5px 5px;
+ 
+}
+
+.del_icon{
+    color: black !important;
+    font-size: large !important;
+    padding-left: 11px;
+    cursor: pointer;
+}
+
+.user-dropdown{
+    display: flex;
+    padding-top: 5%;
+     
+    &:hover{
+        cursor: pointer;
+    }
+    
+}
+.number_button{
+    border-radius: 5px;
+    background-color: white;
+}
+
+@media only screen and (max-width: 1120px) {
+   .myLinks{
+       left: 70%;
+       width: 8rem
+   }
+   .max-width{
+    display: none;
+}
+   }

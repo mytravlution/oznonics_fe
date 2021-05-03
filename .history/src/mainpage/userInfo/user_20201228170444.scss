@@ -1,0 +1,155 @@
+
+
+.table-row{
+    display: table;
+    width: 80%;
+    margin: 10px auto;
+    color: black;
+    font-size: 16;
+}
+
+.table-cell{
+    display: table-cell;
+    width: 20%;
+    text-align: center;
+    background-color: white;
+    border-bottom :1px solid black;
+
+}
+.table-cell-first{
+    display: table-cell;
+    width: 5%;
+    text-align: center;
+    background-color: white;
+    border-bottom :1px solid black;
+
+}
+
+.table-header{
+    font-size: 20;
+    font-weight: bold;
+}
+
+.multiple-icons{
+    margin: 10px 50px 0px;
+    display: flex;
+    cursor: pointer
+}
+
+.multiple-img{
+    height: 25px;
+    width: 20px;
+    cursor: pointer;
+    margin: 0px 10px
+}
+
+.multiple-icons a{
+    color: black;
+    margin-right: 15px;
+}
+
+.multiple-icons p{
+    font-size: small;
+}
+
+.right-head{
+    font-size: 16px;
+}
+.right-subhead{
+    font-size: 12px;
+    margin-top: -7%
+}
+.table-box{
+    max-height: 350px;
+    flex: 1;
+    overflow-y: scroll;
+}
+.left-arrow{
+    color: black !important;
+}
+
+.go-to{  
+      position: absolute;
+    display: flex;
+    left: 10%;
+    bottom: 0%;
+}
+
+a{
+    color: black !important;
+}
+.delete-popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, 0.5);
+margin: auto;
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delete-popup-inner{
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: 45%;
+    width: 25vw;
+    height: fit-content;
+    margin: auto;
+    background: white;
+    padding: 20px 15px;
+
+    border-radius: 25px;
+}
+.delete-p{
+    text-align: center;
+    font-weight: bold;
+}
+
+.delete-button{
+  
+    border-radius: 25px;
+    border: solid 1px;
+    font-size: 15px;
+    font-weight: bold;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 33px;
+    width: 100px;
+  
+}
+.confirm{
+    background-color: black;
+    color: white;
+}
+.delete{
+    background-color: white;
+color: black;
+}
+
+@media (max-width: 1000px){
+    .show{
+        display: none;
+    }
+    .popup-button{
+        display: grid;
+    }
+    .delete-button{
+        margin-bottom: 10px;
+   
+    }
+    .table-row{
+        display: grid;
+    }
+    .table-box{
+        display: grid;
+        justify-content: center;
+    }
+    .table-cell-first
+    {display: flex;}
+    .table-header{display: none;}
+}

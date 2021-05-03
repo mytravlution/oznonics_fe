@@ -1,7 +1,6 @@
-import axios from 'axios';
 import Popup from "./add_user-popup";
 import ListFiles from "../../mainpage/allProducts/listFiles";
-import { baseUrl } from "../../shared/http-service";
+import { baseUrl, post } from "../../shared/http-service";
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 
@@ -15,7 +14,8 @@ export default class midHeader extends Component {
       showFiles: false,
       dataValues: [],
       hbclicked: false,
-      showEditUser:false
+      showEditUser: false,
+      userType: localStorage.getItem('user-type')
     };
   }
   updateInputValue(evt) {
@@ -33,24 +33,32 @@ export default class midHeader extends Component {
   toggleFilePopup() {
     this.setState({
       showFiles: !this.state.showFiles,
-     
+
     })
   }
   sendquery = async () => {
     this.setState({
-      showFiles: !this.state.showFiles
+      showFiles: !this.state.showFiles,
+      searchStr: this.state.inputValue
     })
+    const response = await post(baseUrl + "searchQuery/",
+     { searchStr: this.state.inputValue });
 
-    axios.post(baseUrl + "searchQuery/",
-      { searchStr: this.state.inputValue }, {
-
-    }).then(res => {
-      this.setState({
-        dataValues: res.data['files']
-      })
-      console.log("full reponse:" + this.state.dataValues);
-      console.log(res.statusText);
+    // console.log(response.data);
+    this.setState({
+        dataValues: response.data
     })
+    // axios.post(baseUrl + "searchQuery/",
+    //   { searchStr: this.state.inputValue }, {
+
+    // }).then(res => {
+
+    //   this.setState({
+    //     dataValues: res.data
+    //   })
+    //   console.log("full reponse:" + this.state.dataValues);
+    //   console.log(res.statusText);
+    // })
 
   }
 
@@ -59,39 +67,74 @@ export default class midHeader extends Component {
       hbclicked: !this.state.hbclicked
     })
     console.log(this.state.hbclicked);
-    
+
   }
-  checkEditUser(){
+  checkEditUser() {
     this.setState({
       hbclicked: !this.state.hbclicked,
       showEditUser: !this.state.showEditUser
     })
   }
+  logout() {
+    window.localStorage.clear();
+  }
   render() {
     return (
       <div className="search-parent">
-        <div className="search-bar">
-          <input type="text" placeholder="Search here.." name="search"
+        {/* start search bar */}
+        <div className="search">
+        <div>
+          {/* <button className="searchSize">Click me</button> */}
+          <input type="text" name="search"
+            className="form-control input-sm inputSearch"
+             placeholder="Use “,” to search multiple phrases"
             onChange={evt => this.updateInputValue(evt)}
-            value={this.state.inputValue}
-          />
-          <button type="submit" onClick={this.sendquery} ><i className="fa fa-search"></i></button>
-          {(this.state.showFiles) && <ListFiles dataValues={this.state.dataValues} closeFile={this.toggleFilePopup.bind(this)} />}
-
+            value={this.state.inputValue} />
+            </div>
+            <div>
+            <button type="submit" className="search-button" onClick={this.sendquery}>
+              <i className="fa fa-search" style={{ fontSize: "25px" }}></i></button>
+              {(this.state.showFiles) && <ListFiles searchStr={this.state.searchStr} dataValues={this.state.dataValues} closeFile={this.toggleFilePopup.bind(this)} />}
+              </div>
+        
         </div>
+        {/* <div className="search-bar">
+          <div>
+            <input type="text" placeholder="Use “,” to search multiple phrases" name="search"
+              onChange={evt => this.updateInputValue(evt)}
+              value={this.state.inputValue}
+            />
+          </div>
+          <button type="submit" onClick={this.sendquery} ><i className="fa fa-search"></i></button>
+          {(this.state.showFiles) && <ListFiles searchStr={this.state.searchStr} dataValues={this.state.dataValues} closeFile={this.toggleFilePopup.bind(this)} />}
+
+        </div> */}
+        {/* end search bar */}
         <div className="add-user">
           <i className="fa fa-bars" onClick={this.checkUser.bind(this)} />
           {this.state.hbclicked ?
             <div className="myLinks">
-              <div className="user-dropdown"  onClick={this.togglePopup.bind(this)} >
-              <img  className="user-img" src={require("../../images/add_user.png")} alt="Add User"/>
-              <p>Add User</p>
+              {this.state.userType === "admin" ?
+                <div className="user-dropdown" onClick={this.togglePopup.bind(this)} >
+                  <img className="user-img" src={require("../../images/add_user.png")} alt="Add User" />
+                  <p>Add User</p>
                 </div>
+                : null
+              }
+              {this.state.userType === "admin" ?
+
                 <div className="user-dropdown" onClick={this.checkEditUser.bind(this)}>
-              <img  className="user-img"  src={require("../../images/add_user.png")} alt="Edit User"/>
-              <p>Edit User</p>
+                  <img className="user-img" src={require("../../images/edit_user.png")} alt="Edit User" />
+                  <p>Edit User</p>
                 </div>
-            
+                : null
+              }
+              <a href="/"><div className="user-dropdown" onClick={this.logout.bind(this)}>
+                <img className="user-img" src={require("../../images/logout.png")} alt="Logout" />
+                <p>Logout</p>
+              </div></a>
+
+
             </div>
             : null
           }
@@ -103,7 +146,7 @@ export default class midHeader extends Component {
               closePopup={this.togglePopup.bind(this)} />
             : null}
 
-            {this.state.showEditUser ?
+          {this.state.showEditUser ?
             <Redirect to="/showUsers" /> : null}
           {/* <p>Add User</p> */}
 

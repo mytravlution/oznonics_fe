@@ -1,0 +1,243 @@
+
+
+.table-row{
+    display: table;
+    width: 80%;
+    margin: 10px auto;
+    color: black;
+    font-size: 16;
+}
+
+.table-cell{
+    display: table-cell;
+    width: 20%;
+    text-align: center;
+    background-color: white;
+    border-bottom :1px solid black;
+
+}
+.table-cell-first{
+    display: table-cell;
+    width: 5%;
+    text-align: center;
+    background-color: white;
+    border-bottom :1px solid black;
+
+}
+
+.table-header{
+    font-size: 20;
+    font-weight: bold;
+}
+
+.multiple-icons{
+    margin: 10px 50px 0px;
+    display: flex;
+    cursor: pointer
+}
+
+.multiple-img{
+    height: 25px;
+    width: 20px;
+    cursor: pointer;
+    margin: 0px 10px
+}
+
+.multiple-icons a{
+    color: black;
+    margin-right: 15px;
+}
+
+.multiple-icons p{
+    font-size: small;
+}
+
+.right-head{
+    font-size: 16px;
+}
+.right-subhead{
+    font-size: 12px;
+    margin-top: -7%
+}
+.table-box{
+    // max-height: 350px;
+    max-height:50vh;
+    flex: 1;
+    overflow-y: scroll;
+}
+.file{    margin-top: 15px;
+}
+.user{margin-top: -15px;}
+.left-arrow{
+    color: black !important;
+}
+
+.go-to{  
+      position: absolute;
+    display: flex;
+    left: 10%;
+    bottom: 0%;
+}
+
+a{
+    color: black !important;
+}
+.delete-popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, 0.5);
+margin: auto;
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delete-popup-inner{
+    position: absolute;
+    // left: 30%;
+    // right: 30%;
+    // top: 45%;
+    width: 35vw;
+    height: fit-content;
+    margin: auto;
+    background: white;
+    padding: 20px 15px;
+
+    border-radius: 25px;
+}
+.delete-p{
+    text-align: center;
+    font-weight: bold;
+}
+
+.delete-button{
+  
+    border-radius: 25px;
+    border: solid 1px;
+    font-size: 15px;
+    font-weight: bold;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 33px;
+    width: 100px;
+  
+}
+.confirm{
+    background-color: black;
+    color: white;
+}
+.delete{
+    background-color: white;
+color: black;
+}
+
+
+  .datatable {
+    text-align: center;
+   
+  }
+  
+
+  @media only screen and (min-width:1024px){
+    .smallCol{
+        width:10%
+    }
+    .bigCol{
+        width: 30%;
+
+    }
+    .medCol{
+        width: 20%;
+    }
+    td,th{    border-bottom: 1px solid black}
+    // th{    border-bottom: 1px solid black;}
+    // tr{border-bottom: 1px solid;
+    // font-size: 13px;}
+    //   tr:nth-of-type(even) { 
+    //   background: #eee; 
+    // }
+    .mainFilesTable{
+      width: 80%;
+      margin: auto;
+      font-size: 14px;
+    }
+    table{    border-collapse: separate;
+        border-spacing: 0px 15px;}
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    .mainFilesTable{
+        font-size: 12px;
+        width: 80%;
+    margin: auto;
+      }
+      /* Force table to not be like tables anymore */
+      table, thead, tbody, th, td, tr { 
+          display: block; 
+      }
+      tr:nth-of-type(even) { 
+        background: #eee; 
+      }
+      
+      /* Hide table headers (but not display: none;, for accessibility) */
+      thead tr { 
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+      }
+      
+    //   tr { border: 1px solid #ccc; }
+      
+      td { 
+          /* Behave  like a "row" */
+          border: none;
+          border-bottom: 1px solid #eee; 
+          position: relative;
+          padding-left: 30%;
+      }
+      
+      td:before { 
+          /* Now like a table header */
+          position: absolute;
+          /* Top/left values mimic padding */
+          left: 6px;
+          width: 30%;
+          white-space: nowrap;
+      }
+      
+      /*
+      Label the data
+      */
+      td:nth-of-type(1):before { content: "Username"; font-weight: bold; }
+      td:nth-of-type(2):before { content: "File Name";font-weight: bold; }
+      td:nth-of-type(3):before { content: "Category"; font-weight: bold;}
+      td:nth-of-type(4):before { content: "Date";font-weight: bold; }
+   
+      .userCol { 
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 30%;
+    }
+      .userCol:before { 
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        left: 6px;
+        width: 30%;
+        white-space: nowrap;
+    }
+      .userCol:nth-of-type(1):before { content: "Name";font-weight: bold; }
+      .td:nth-of-type(2):before { content: "File Name";font-weight: bold; }
+      .td:nth-of-type(3):before { content: "Category"; font-weight: bold;}
+      td:nth-of-type(4):before { content: "Date";font-weight: bold; }
+
+
+     
+  }

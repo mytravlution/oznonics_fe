@@ -17,7 +17,6 @@ export default function OtpVerification({ mobile_number, username, user_type }) 
         const otp = document.getElementById("otp").value;
         if (otp === "") {
             alert("Enter your OTP")
-
         }
         else {
             const response = await post(baseUrl + "verifyOtp", {
@@ -27,38 +26,45 @@ export default function OtpVerification({ mobile_number, username, user_type }) 
             });
             console.log(response);
             if (response.msg === "SUCCESS") {
-               setLoggedIn(true);
+                setLoggedIn(true);
+                console.log("true");
+
                 alert("OTP Verified successfully");
             }
-            else alert("Error found");
+            else { alert("Enter correct otp"); }
         }
     };
 
     return (
         <div>
-             {loggedIn && <Redirect to="/products/" />}
+            {loggedIn && <Redirect to="/landing/" />}
 
-             {!loggedIn &&  <div style={{ backgroundColor: "black" }}>
+            {!loggedIn && <div style={{ backgroundColor: "black" }}>
                 <Header />
                 <div className="login-dialog-container">
                     <div className="login-dialog">
-                        <div className="form">
-                            <p className="otp-text">    Enter the OTP received on ******{id.substring(id.length - 3)}
-                            </p>
-                            <input id="otp" placeholder="OTP" type="text" />
-                        </div>
+                        {/* <form onSubmit={verifyMobile}> */}
+                            <div className="form">
+                                <p className="otp-text">
+                                    Enter the OTP received on ******{id.substring(id.length - 3)}
+                                </p>
+                                <input id="otp" placeholder="OTP" type="number" />
+                            </div>
+                            {/* <div className="login-act">
+                                <button className="no-bg" type="submit">Verify</button>
+                            </div> */}
+                        {/* </form> */}
                         <div className="login-act">
                             <button className="no-bg" onClick={verifyMobile}>
                                 Verify
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>
-             }
-      {/* {loggedIn && <Products />} */}
-     
+            }
+            {/* {loggedIn && <Products />} */}
+
         </div>
     )
 }

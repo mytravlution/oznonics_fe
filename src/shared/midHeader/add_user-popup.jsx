@@ -3,21 +3,6 @@ import React, { Component } from 'react'
 
 
 export default class popup extends Component {
-    // const onAddButton = async() => {
-    //     const username = document.getElementById("username");
-    //     const password = document.getElementById("password");
-    //     const phone_num = document.getElementById("phone_num");
-    //     const segment = document.getElementById("segment");
-    //     console.log(username);
-
-    //     const response = await post(baseUrl+"/addUser",{
-    //         username,
-    //         password,
-    //         phone_num,
-    //         segment
-    //     });
-    //     console.log(response);  
-    // }
 
     constructor(props) {
         super(props);
@@ -26,10 +11,11 @@ export default class popup extends Component {
             password: '',
             phone_num: '',
             segment: '',
-            category: ['Mechanical','Electronics', 'Electrical', 'Testing', 'Product Accessories & Peripherals'],
+            category: ['Mechanical', 'Electronics', 'Electrical', 'Testing', 'Product Accessories & Peripherals'],
             selected_category: '',
-            sub_category:[],
-            selected_sub_category:''
+            sub_category: [],
+            selected_sub_category: '',
+            email:''
         };
     }
     updateUsername(evt) {
@@ -43,6 +29,11 @@ export default class popup extends Component {
             password: evt.target.value
         })
     }
+    updateEmail(evt) {
+        this.setState({
+            email: evt.target.value
+        })
+    }
     updatePhone(evt) {
         this.setState({
             phone_num: evt.target.value
@@ -52,40 +43,31 @@ export default class popup extends Component {
         this.setState({
             segment: evt.target.value
         })
-        // if ((evt.target.value === 'HR300')) {
-        //     this.setState({
-        //         category: ['Mechanical', 'Electronics']
-        //     })
-        // } else {
-        //     this.setState({
-        //         category: ['a', 'b']
-        //     })
-        // }
     }
-    updateCategory(evt){
+    updateCategory(evt) {
         this.setState({
-            selected_category :evt.target.value
+            selected_category: evt.target.value
         })
 
-        if(evt.target.value === 'Mechanical'){
+        if (evt.target.value === 'Mechanical') {
             this.setState({
-                sub_category :['Product Drawings', 'Packaging', 'Product Assembly', 'Inline Changes', 'Costing', 'BOM']
+                sub_category: ['Product Drawings', 'Packaging', 'Product Assembly', 'Inline Changes', 'Costing', 'BOM']
             })
-        }else if(evt.target.value === 'Electronics'){
+        } else if (evt.target.value === 'Electronics') {
             this.setState({
-                sub_category :['Gerber Files', 'Schematics', 'Firmware Source Code & HEX Files', 'Inline Changes', 'Costing', 'BOM']
+                sub_category: ['Gerber Files', 'Schematics', 'Firmware Source Code & HEX Files', 'Inline Changes', 'Costing', 'BOM']
             })
-        }else if(evt.target.value === 'Electrical'){
+        } else if (evt.target.value === 'Electrical') {
             this.setState({
-                sub_category :['In-house Designs', 'Externally sourced', 'New Component Dev', 'Inline Changes', 'Costing', 'BOM']
+                sub_category: ['In-house Designs', 'Externally sourced', 'New Component Dev', 'Inline Changes', 'Costing', 'BOM']
             })
-        }else if(evt.target.value === 'Testing'){
+        } else if (evt.target.value === 'Testing') {
             this.setState({
-                sub_category :['Testing Protocols', 'Testing Setup', 'Testing Equipment', 'Testing Process Changes', 'Test Results', 'Field Inputs']
+                sub_category: ['Testing Protocols', 'Testing Setup', 'Testing Equipment', 'Testing Process Changes', 'Test Results', 'Field Inputs']
             })
-        }else if(evt.target.value === 'Product Accessories & Peripherals'){
+        } else if (evt.target.value === 'Product Accessories & Peripherals') {
             this.setState({
-                sub_category :['Battery Pack', 'Battery Charger', 'Bags & Packs', 'Mounting Accessories', 'Apparel', 'Miscellaneous']
+                sub_category: ['Battery Pack', 'Battery Charger', 'Bags & Packs', 'Mounting Accessories', 'Apparel', 'Miscellaneous']
             })
         }
     }
@@ -112,12 +94,13 @@ export default class popup extends Component {
             password: this.state.password,
             phone_num: this.state.phone_num,
             segment: this.state.segment,
-            category:this.state.selected_category,
+            category: this.state.selected_category,
             sub_category: this.state.selected_sub_category,
-            operation_type:'add'
+            operation_type: 'add'
         });
         if (response.status === 1) {
             alert("successfully added");
+            window.location.reload();
         } else if (response.status === 0) {
             alert("Something got failed");
         } else if (response.status === 2) {
@@ -127,6 +110,7 @@ export default class popup extends Component {
     }
     render() {
         return (
+
             <div className="popup">
                 <div className="popup-inner">
                     <div className="popup-header">
@@ -138,18 +122,24 @@ export default class popup extends Component {
                         <label htmlFor="username">Username</label>
                         <input type="text"
                             onChange={evt => this.updateUsername(evt)}
-                            value={this.state.username} />
+                            value={this.state.username}
+                        />
 
                         <label htmlFor="password">Password</label>
                         <input type="password"
                             onChange={evt => this.updatePassword(evt)}
                             value={this.state.password} />
-
+                        <label htmlFor="password">Email Id</label>
+                        <input type="text"
+                            onChange={evt => this.updateEmail(evt)}
+                            value={this.state.email} />
                         <label htmlFor="phone_num">Phone Number</label>
-                        <input type="number"
-                            onChange={evt => this.updatePhone(evt)}
-                            value={this.state.phone_num} />
-
+                        <div style={{ "display": "flex" }}>
+                            <button className="number_button">+1</button>
+                            <input type="number"
+                                onChange={evt => this.updatePhone(evt)}
+                                value={this.state.phone_num} />
+                        </div>
                         <label htmlFor="segment">Segment to be handled</label>
 
                         <select id="segment" onChange={evt => this.updateSegment(evt)}
@@ -157,7 +147,7 @@ export default class popup extends Component {
                             <option value="All">All</option>
                             <option value="HR230">HR230 </option>
                             <option value="HR300">HR300</option>
-                            <option value="Orion">Orion</option>
+                            <option value="HR400/Orion">HR400/Orion</option>
                             <option value="Orion2">Orion2 </option>
                             <option value="Pulse">Pulse</option>
                         </select>
@@ -172,20 +162,20 @@ export default class popup extends Component {
                             {this.state.category.map((cat, index) => {
                                 return (<option value={cat}>{cat}</option>)
                             })}
-             
+
                         </select>
 
-                         {/* //for SubCategory */}
-                         <label htmlFor="segment">Sub-Category</label>
+                        {/* //for SubCategory */}
+                        <label htmlFor="segment">Sub-Category</label>
 
-                         <select id="sub_category" onChange={evt => this.updateSubCategory(evt)}
+                        <select id="sub_category" onChange={evt => this.updateSubCategory(evt)}
                             value={this.state.selected_sub_category}>
 
                             <option value="All">All</option>
                             {this.state.sub_category.map((cat, index) => {
                                 return (<option value={cat}>{cat}</option>)
                             })}
-             
+
                         </select>
 
 

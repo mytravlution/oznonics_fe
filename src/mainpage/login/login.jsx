@@ -10,9 +10,10 @@ import OtpVerification from './otpVerification';
 export default function Login() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [phone, setphone] = useState('');
-const [username, setusername] = useState('');
-const [userType, setuserType] = useState('')
-  const handleLogInClick = async () => {
+  const [username, setusername] = useState('');
+  const [userType, setuserType] = useState('')
+  const handleLogInClick = async (e) => {
+    e.preventDefault();
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     // const mobile_number = document.getElementById("mobile_number").value;
@@ -25,13 +26,19 @@ const [userType, setuserType] = useState('')
         password
       });
       console.log(response);
-      if (response.msg === "SUCCESS") {setLoggedIn(true);
-    
-      setphone(response.phone_num);
-      setusername(response.username);
-      setuserType(response.user_type);
-      localStorage.setItem('user-type', response.user_type);
-      localStorage.setItem('username', response.username)
+      if (response.msg === "SUCCESS") {
+        setLoggedIn(true);
+
+        setphone(response.phone_num);
+        setusername(response.username);
+        setuserType(response.user_type);
+        localStorage.setItem('user-type', response.user_type);
+        localStorage.setItem('username', response.username);
+        localStorage.setItem('segment', response.segment);
+        localStorage.setItem('category',response.category);
+        localStorage.setItem('sub_category',response.sub_category);
+        localStorage.setItem('email', response.email);
+
       }
       // if (username === "admin" && password === "admin12") setLoggedIn(true);
       else alert("Invalid Username or Password");
@@ -39,16 +46,16 @@ const [userType, setuserType] = useState('')
 
   };
 
-  
+
 
 
   return (
 
     <div>
-      {!loggedIn && <LoginDialog handleLogInClick={handleLogInClick}  />}
+      {!loggedIn && <LoginDialog handleLogInClick={handleLogInClick} />}
       {/* {loggedIn && <Products />} */}
-     
-      {loggedIn && <OtpVerification mobile_number={phone} username={username} user_type={userType}/>}
+
+      {loggedIn && <OtpVerification mobile_number={phone} username={username} user_type={userType} />}
 
       {/* {loggedIn && <Redirect to="/products/" />} */}
     </div>
@@ -64,7 +71,7 @@ function LoginDialog({ handleLogInClick }) {
       <Header />
       <div className="login-dialog-container">
         <div className="login-dialog">
-
+        <form onSubmit={handleLogInClick}>
           <div className="form">
             <div>
               {/* <label htmlFor="username">Username</label> */}
@@ -81,12 +88,11 @@ function LoginDialog({ handleLogInClick }) {
               />
             </div>
           </div>
-        
           <div className="login-act">
-            <button className="no-bg" onClick={handleLogInClick}>
-              Login
-            </button>
+          <button className="no-bg" type="submit">Submit</button>
           </div>
+    </form>
+        
         </div>
       </div>
     </div>

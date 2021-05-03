@@ -4,17 +4,20 @@ import { Redirect } from 'react-router-dom';
 export default function SecondLevel({ detailSelected, subCategorySelected, secondLevelSelected,productselected }) {
     const [buttonValue, setButtonValue] = useState('');
     const [isLevelClicked,setLevelClicked] = useState(false);
+    const [lastValue, setLastValue] = useState('');
 
     const ext = productselected+"_"+detailSelected+"_"+subCategorySelected+"_"+secondLevelSelected;
     const onSecondLeveClick = (event) => {
         setButtonValue(event.target.getAttribute("data-index"));
         setLevelClicked(true);
-
+        setLastValue(event.target.value);
     }
 
     const arr1 = [];
-
-    if ((secondLevelSelected === "3d drawings") ||
+    // if((subCategorySelected==="firmware source code & hex files")){
+    //     arr1.push('Firmware Source Code', 'HEX Files');
+    // }
+if ((secondLevelSelected === "3d drawings") ||
         (secondLevelSelected === "2d drawings") ||
         (secondLevelSelected === "product assembly") ||
         (secondLevelSelected === "product chassis") ||
@@ -22,20 +25,26 @@ export default function SecondLevel({ detailSelected, subCategorySelected, secon
     ) {
         arr1.push('Main Unit', 'Battery Charger', 'Battery Pack');
     }
+    else if((secondLevelSelected === "main unit" ||
+    secondLevelSelected === "battery pack" ||
+    secondLevelSelected === "battery charger") && subCategorySelected==="firmware source code & hex files"){
+        arr1.push('Firmware Source Code', 'HEX Files');
+    }
     else if (secondLevelSelected === "battery pack & charger") {
         arr1.push('Battery Charger', 'Battery Pack');
     }
     else if (secondLevelSelected === "coil & transformer") {
         arr1.push('Coil', 'Transformer');
     }
-    else if ((secondLevelSelected === "Main Unit") ||
-        (secondLevelSelected === "Battery Pack") ||
-        (secondLevelSelected === "Battery Charger")) {
+    else if ((secondLevelSelected === "main unit") ||
+        (secondLevelSelected === "battery pack") ||
+        (secondLevelSelected === "battery charger")) {
         arr1.push('PCB', 'Unit');
     }else{}
     return (
         <div>
-            {arr1.length !== 0 && <div className="arrow-right">&#x3e;</div>}
+            {arr1.length !== 0 && <i class="fa fa-arrow-circle-right arrow-right " aria-hidden="true"></i>
+}
             <div className="second-level-outer">
                 {/* <p>{detailSelected}/{subCategorySelected}/{secondLevelSelected}</p> */}
                 {arr1.map((cat, index) => {
@@ -52,8 +61,7 @@ export default function SecondLevel({ detailSelected, subCategorySelected, secon
             </div>
 
             <div>
-               
-                        {isLevelClicked && <Redirect to={`/addImage/${ext}` }/> }
+                        {isLevelClicked && <Redirect to={`/addImage/${"products_"+ext+"_"+lastValue}` }/> }
                 </div>
 
         </div>
