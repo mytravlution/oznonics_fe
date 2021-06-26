@@ -96,7 +96,8 @@ export default class popup extends Component {
             segment: this.state.segment,
             category: this.state.selected_category,
             sub_category: this.state.selected_sub_category,
-            operation_type: 'add'
+            operation_type: 'add',
+            email:this.state.email
         });
         if (response.status === 1) {
             alert("successfully added");
